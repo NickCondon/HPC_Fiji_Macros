@@ -35,7 +35,7 @@
 #@ String frames
 #@ String slices
 #@ String channels
-
+#@ Boolean(label="Kill Fiji on Finish?") exitFiji
 
 fs = File.separator;
 run("Bio-Formats Macro Extensions");
@@ -226,4 +226,6 @@ d = Stack.getDimensions(width, height, channels, slices, frames);
 // A final statement to confirm the task is complete...
 
 print("Task complete.");
-eval("script", "System.exit(0);");
+if (exitFiji) {
+    eval("script", "System.exit(0);")
+}
