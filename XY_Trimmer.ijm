@@ -1,9 +1,9 @@
 //Modified by Nicholas Condon (n.condon@uq.edu.au)
 
 /*
- * Script: IPP Batch 4D Cropping
+ * Script: XY_Trimmer.ijm
  * 
- * Description: Takes a folder of images and performs 4D Cropping (X/Y/Z/T).
+ * Description: Takes a folder of images and performs 2D Cropping (X/Y) from the image border using a user-input value.
  * 
  * Input Requirements:
  *    input (string to file location) - AUTOPOPULATED
@@ -26,7 +26,7 @@
 #@ String output
 #@ String suffix
 #@ String (value="12") trimSize
-
+#@ Boolean(label="Kill Fiji on Finish?") exitFiji
 fs = File.separator;
 
 
@@ -95,3 +95,7 @@ print (timestamp + ": Processing " + input + file);
 }
 // A final statement to confirm the task is complete...
 print("Task complete.");
+if (exitFiji) {
+    eval("script", "System.exit(0);")
+}
+
