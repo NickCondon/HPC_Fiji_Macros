@@ -31,7 +31,7 @@ print("\\Clear");
 #@ String suffix
 #@ String (choices={"Auto Scale Brightness & Contrast", "Reset Brightness and Contrast"}, style="radioButtonHorizontal") brightness
 #@ float (value=0.5) scale
-
+#@ Boolean(label="Kill Fiji on Finish?") exitFiji
 
 fs = File.separator;
 run("Bio-Formats Macro Extensions");
@@ -120,4 +120,8 @@ print (timestamp + ": Processing " + input + file);
 // A final statement to confirm the task is complete...
 
 print("Task complete.");
-eval("script", "System.exit(0);");
+if (exitFiji) {
+    eval("script", "System.exit(0);")
+}
+
+
