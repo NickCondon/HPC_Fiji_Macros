@@ -36,7 +36,7 @@ print("\\Clear");
 #@ String (choices={"Do Not Flip Horizontal", "Flip horizontal"}, style="radioButtonHorizontal") flipHorizontal
 #@ String (choices={"Do Not Flip Vertical", "Flip vertical"}, style="radioButtonHorizontal") flipVertical
 #@ Integer (value=0) rotation
-
+#@ Boolean(label="Kill Fiji on Finish?") exitFiji
 
 
 if(flipHorizontal=="Do Not Flip Horizontal"){flipH = 0;}
@@ -136,4 +136,6 @@ print (timestamp + ": Processing " + input + file);
 
 print("Task complete.");
 
-eval("script", "System.exit(0);");
+if (exitFiji) {
+    eval("script", "System.exit(0);")
+}
