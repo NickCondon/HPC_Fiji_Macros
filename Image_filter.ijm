@@ -28,7 +28,7 @@
 #@ String suffix
 #@ String (choices={"Mean", "Median", "Gaussian Blur", "Minimum", "Maximum"}, style="listBox") filtertype
 #@ float (value=2) filtersize
-
+#@ Boolean(label="Kill Fiji on Finish?") exitFiji
 
 
 
@@ -105,4 +105,7 @@ print (timestamp + ": Processing " + input + file);
 
 // A final statement to confirm the task is complete...
 print("Task complete.");
-eval("script", "System.exit(0);");
+if (exitFiji) {
+    eval("script", "System.exit(0);")
+}
+
