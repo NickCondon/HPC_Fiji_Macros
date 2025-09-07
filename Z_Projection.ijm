@@ -33,7 +33,7 @@ print("\\Clear");
 #@ String (choices={"Max Intensity", "Min Intensity", "Average Intensity", "Sum Slices", "Standard Deviation", "Median ", "No Projection"}, style="listBox") projectiontype
 #@ String (choices={"Concatenate", "Do not concatenate"}, style="radioButtonHorizontal") conc
 #@ Integer (value=10) fps
-
+#@ Boolean(label="Kill Fiji on Finish?") exitFiji
 
 
 if (conc=="Concatenate"){conc="1";}
@@ -137,4 +137,7 @@ function concFile(input,conc,fps) {
 
 print("Task complete.");
 
-eval("script", "System.exit(0);");
+if (exitFiji) {
+    eval("script", "System.exit(0);")
+}
+
