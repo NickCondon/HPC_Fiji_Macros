@@ -32,6 +32,7 @@
 #@ String (value="0-0") ycoords
 #@ String (value="0-0") zcoords
 #@ String (value="0-0") tcoords
+#@ Boolean(label="Kill Fiji on Finish?") exitFiji
 
 fs = File.separator;
 run("Bio-Formats Macro Extensions");
@@ -131,4 +132,6 @@ print (timestamp + ": Processing " + input + file);
 }
 // A final statement to confirm the task is complete...
 print("Task complete.");
-eval("script", "System.exit(0);");
+if (exitFiji) {
+    eval("script", "System.exit(0);")
+}
